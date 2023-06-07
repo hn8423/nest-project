@@ -18,9 +18,9 @@ describe('MoviesService', () => {
   });
 
   describe('getAll', () => {
-    it('should return an array', () => {
+    it('should return an Promise', () => {
       const result = service.getAll();
-      expect(result).toBeInstanceOf(Array);
+      expect(result).toBeInstanceOf(Promise);
     });
   });
 
@@ -46,17 +46,27 @@ describe('MoviesService', () => {
 
   describe('deleteOne', () => {
     it('deletes a movie', () => {
-      service.create({
-        title: 'Test Movie',
-        genres: ['test'],
-        year: 2000,
-      });
-      const beforeDelete = service.getAll().length;
-      service.deleteOne(1);
-      const afterDelete = service.getAll().length;
-      expect(afterDelete).toBeLessThan(beforeDelete);
+      let beforeDelete: number;
+      let afterDelete: number;
+      service
+        .create({
+          title: 'Test Movie',
+          genres: ['test'],
+          year: 2000,
+        })
+        .then(() => {
+          beforeDelete = service.count();
+        })
+        .then(() => {
+          service.deleteOne(1);
+        })
+        .then(() => {
+          afterDelete = service.count();
+        })
+        .then(() => {
+          expect(afterDelete).toBeLessThan(beforeDelete);
+        });
     });
-
     it('should throw a NotFoundException', () => {
       try {
         service.deleteOne(999);
@@ -68,14 +78,21 @@ describe('MoviesService', () => {
 
   describe('create', () => {
     it('should create a movie', () => {
-      const beforeCreate = service.getAll().length;
-      service.create({
-        title: 'Test Movie',
-        genres: ['test'],
-        year: 2000,
-      });
-      const afterCreate = service.getAll().length;
-      expect(afterCreate).toBeGreaterThan(beforeCreate);
+      const beforeCreate: number = service.count();
+      let afterCreate: number;
+
+      service
+        .create({
+          title: 'Test Movie',
+          genres: ['test'],
+          year: 2000,
+        })
+        .then(() => {
+          afterCreate = service.count();
+        })
+        .then(() => {
+          expect(afterCreate).toBeGreaterThan(beforeCreate);
+        });
     });
   });
 
@@ -87,8 +104,13 @@ describe('MoviesService', () => {
         year: 2000,
       });
       service.update(1, { title: 'Updated Test' });
-      const movie = service.getOne(1);
-      expect(movie.title).toEqual('Updated Test');
+
+      service
+        .getOne(1)
+        .then(v => v.title)
+        .then(title => {
+          expect(title).toEqual('Updated Test');
+        });
     });
 
     it('should throw a NotFoundException', () => {

@@ -25,9 +25,11 @@
     "@nestjs/core": "^7.0.0",
     "@nestjs/mapped-types": "^0.1.0",
     "@nestjs/platform-express": "^7.0.0",
+    "@types/node-json-db": "^0.9.3",
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "lowdb": "^6.0.1",
+    "node-json-db": "^2.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4"

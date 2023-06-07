@@ -13,6 +13,9 @@ dependencies:
   '@nestjs/platform-express':
     specifier: ^7.0.0
     version: 7.0.0(@nestjs/common@7.0.0)(@nestjs/core@7.0.0)
+  '@types/node-json-db':
+    specifier: ^0.9.3
+    version: 0.9.3
   class-transformer:
     specifier: ^0.3.1
     version: 0.3.1
@@ -22,6 +25,9 @@ dependencies:
   lowdb:
     specifier: ^6.0.1
     version: 6.0.1
+  node-json-db:
+    specifier: ^2.2.0
+    version: 2.2.0
   reflect-metadata:
     specifier: ^0.1.13
     version: 0.1.13
@@ -993,6 +999,13 @@ packages:
   /@types/mime@3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
     dev: true
+
+  /@types/node-json-db@0.9.3:
+    resolution: {integrity: sha512-rxLQvD8mU6LZlz5QlTIs9nz9AB2jOiS/0nZ/T8MQTdABEUJIyt2Q4wwhbdlEDZcSLWLTYJwsf5mVGi0UaPircw==}
+    deprecated: This is a stub types definition. node-json-db provides its own type definitions, so you do not need this installed.
+    dependencies:
+      node-json-db: 2.2.0
+    dev: false
 
   /@types/node@13.9.1:
     resolution: {integrity: sha512-E6M6N0blf/jiZx8Q3nb0vNaswQeEyn0XlupO+xN6DtJ6r6IT4nXrTry7zhIfYvFCl3/8Cu6WIysmUBKiqV0bqQ==}
@@ -5301,6 +5314,12 @@ packages:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
     dev: true
 
+  /node-json-db@2.2.0:
+    resolution: {integrity: sha512-GBuXPjItZ+XivMxR7bhSjVeXKiHZKRN/HbvqrwVemV6V5atcnIIZbg2J2vJHE6RYHydtPCJoUy05YaK4wQO0TA==}
+    dependencies:
+      rwlock: 5.0.0
+    dev: false
+
   /node-libs-browser@2.2.1:
     resolution: {integrity: sha512-h/zcD8H9kaDZ9ALUWwlBUDo6TKF8a7qBSCSEGfjTVIYeqsioSKaAX+BN7NgiMGp6iSIXZ3PxgCu8KS3b71YK5Q==}
     dependencies:
@@ -6185,6 +6204,10 @@ packages:
     dependencies:
       aproba: 1.2.0
     dev: true
+
+  /rwlock@5.0.0:
+    resolution: {integrity: sha512-XgzRqLMfCcm9QfZuPav9cV3Xin5TRcIlp4X/SH3CvB+x5D2AakdlEepfJKDd8ByncvfpcxNWdRZVUl38PS6ZJg==}
+    dev: false
 
   /rxjs@6.5.3:
     resolution: {integrity: sha512-wuYsAYYFdWTAnAaPoKGNhfpWwKZbJW+HgAJ+mImp+Epl7BG8oNWBCTyRM8gba9k4lk8BgWdoYm21Mo/RYhhbgA==}
